@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1150" height="1150" viewBox="0 0 1000 1150"
+     xmlns="http://www.w3.org/2000/svg" version="1.1">
+
+  <defs>
+    <!-- Arrow for pipeline steps -->
+    <marker id="arrow" markerWidth="10" markerHeight="10"
+            refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L6,3 z" fill="#000" />
+    </marker>
+  </defs>
+
+  <!-- Top Header -->
+  <rect x="0" y="0" width="1000" height="80" fill="#2a9d8f" />
+  <text x="500" y="45" font-family="Arial" font-size="28"
+        text-anchor="middle" fill="#fff">
+    Naive Bayes Classifier
+  </text>
+
+  <!-- Key Idea Box -->
+  <rect x="50" y="100" width="900" height="150" fill="#e9f5db" rx="10" />
+  <text x="500" y="130" font-family="Arial" font-size="20"
+        text-anchor="middle" fill="#2a9d8f">
+    Key Idea
+  </text>
+  <text x="500" y="155" font-family="Arial" font-size="14"
+        text-anchor="middle" fill="#333">
+    "Predict class probability using Bayes' theorem with strong
+    feature-independence assumption"
+  </text>
+  <!-- Add bullet points for clarity -->
+  <text x="500" y="180" font-family="Arial" font-size="13"
+        text-anchor="middle" fill="#333">
+    • We typically compute P(Class | Features) =
+      [P(Class) &#215; ∏ P(Featureᵢ | Class)] / P(Features)
+  </text>
+  <text x="500" y="195" font-family="Arial" font-size="13"
+        text-anchor="middle" fill="#333">
+    • In practice, we compare only P(Class) &#215; ∏ P(Featureᵢ | Class) across classes
+  </text>
+  <text x="500" y="210" font-family="Arial" font-size="13"
+        text-anchor="middle" fill="#333">
+    • "Naive" assumption: each feature is conditionally independent given the class
+  </text>
+  <text x="500" y="225" font-family="Arial" font-size="13"
+        text-anchor="middle" fill="#333">
+    • Widely used in spam detection, text classification, sentiment analysis, etc.
+  </text>
+
+  <!-- Detailed Formula Section -->
+  <g transform="translate(50, 270)">
+    <text x="450" y="30" font-family="Arial" font-size="18"
+          fill="#2a9d8f" text-anchor="middle">
+      Detailed Formula
+    </text>
+    <text x="450" y="60" font-family="Arial" font-size="16" fill="#333"
+          text-anchor="middle">
+      P(Class | Features) =
+      [ P(Class) &#215; ∏ P(Featureᵢ | Class) ] / P(Features)
+    </text>
+    <g font-family="Arial" font-size="12" fill="#666">
+      <text x="280" y="80">Prior Probability</text>
+      <text x="540" y="80">Likelihood</text>
+      <text x="700" y="80">(Naive Ind. across Features)</text>
+      <text x="850" y="80">Evidence</text>
+    </g>
+  </g>
+
+  <!-- Classification Pipeline (left side) -->
+  <g transform="translate(100, 380)">
+    <text x="0" y="0" font-family="Arial" font-size="20" fill="#2a9d8f">
+      Classification Pipeline
+    </text>
+    
+    <!-- Step 1 -->
+    <rect x="0" y="40" width="250" height="80" fill="#caf0f8" rx="5" />
+    <text x="125" y="70" font-family="Arial" font-size="16" text-anchor="middle">
+      1. Input Data
+    </text>
+    <text x="125" y="90" font-family="Arial" font-size="12" text-anchor="middle">
+      Emails with labels (spam/not spam)
+    </text>
+
+    <!-- Arrow -->
+    <line x1="125" y1="120" x2="125" y2="140" stroke="#666"
+          stroke-width="2" marker-end="url(#arrow)" />
+
+    <!-- Step 2 -->
+    <rect x="0" y="140" width="250" height="80" fill="#ffd6a5" rx="5" />
+    <text x="125" y="170" font-family="Arial" font-size="16"
+          text-anchor="middle">
+      2. Feature Extraction
+    </text>
+    <text x="125" y="190" font-family="Arial" font-size="12"
+          text-anchor="middle">
+      Bag-of-words representation
+    </text>
+
+    <!-- Arrow -->
+    <line x1="125" y1="220" x2="125" y2="240" stroke="#666"
+          stroke-width="2" marker-end="url(#arrow)" />
+
+    <!-- Step 3 -->
+    <rect x="0" y="240" width="250" height="80" fill="#e2f0cb" rx="5" />
+    <text x="125" y="270" font-family="Arial" font-size="16"
+          text-anchor="middle">
+      3. Learn Parameters
+    </text>
+    <text x="125" y="290" font-family="Arial" font-size="12"
+          text-anchor="middle">
+      Calculate P(Class) and P(Word|Class)
+    </text>
+
+    <!-- Arrow -->
+    <line x1="125" y1="320" x2="125" y2="340" stroke="#666"
+          stroke-width="2" marker-end="url(#arrow)" />
+
+    <!-- Step 4 -->
+    <rect x="0" y="340" width="250" height="80" fill="#ffc8dd" rx="5" />
+    <text x="125" y="370" font-family="Arial" font-size="16"
+          text-anchor="middle">
+      4. Prediction
+    </text>
+    <text x="125" y="390" font-family="Arial" font-size="12"
+          text-anchor="middle">
+      Compute argmax [P(Class) &#215; ∏ P(Word|Class)]
+    </text>
+  </g>
+
+  <!-- Example: Spam Detection (right side) -->
+  <g transform="translate(400, 380)">
+    <rect x="0" y="0" width="500" height="400" fill="#f8f9fa" rx="10" />
+    <text x="250" y="30" font-family="Arial" font-size="20"
+          text-anchor="middle" fill="#2a9d8f">
+      Example: Spam Detection
+    </text>
+    
+    <!-- Sample Email & Calculation -->
+    <g transform="translate(20, 60)">
+      <text x="0" y="0" font-family="Arial" font-size="16" fill="#333">
+        Sample Email: "Win money now!"
+      </text>
+      
+      <!-- P(Spam) calculation -->
+      <g transform="translate(0, 40)">
+        <text x="0" y="0" font-family="Arial" font-size="14" fill="#666">
+          P(Spam) = 0.3
+        </text>
+        <text x="0" y="20" font-family="Arial" font-size="14" fill="#666">
+          P("Win"|Spam) &#215; P("money"|Spam) &#215; P("now"|Spam)
+          = 0.02 &#215; 0.1 &#215; 0.01 = 0.00002
+        </text>
+        <text x="0" y="40" font-family="Arial" font-size="14" fill="#666">
+          &#8594; 0.3 &#215; 0.00002 = 0.000006
+        </text>
+      </g>
+
+      <!-- P(Not Spam) calculation -->
+      <g transform="translate(0, 120)">
+        <text x="0" y="0" font-family="Arial" font-size="14" fill="#666">
+          P(Not Spam) = 0.7
+        </text>
+        <text x="0" y="20" font-family="Arial" font-size="14" fill="#666">
+          P("Win"|&#172;Spam) &#215; P("money"|&#172;Spam)
+          &#215; P("now"|&#172;Spam)
+          = 0.001 &#215; 0.002 &#215; 0.005 = 0.00000001
+        </text>
+        <text x="0" y="40" font-family="Arial" font-size="14" fill="#666">
+          &#8594; 0.7 &#215; 0.00000001 = 0.000000007
+        </text>
+      </g>
+
+      <!-- Conclusion box -->
+      <rect x="0" y="200" width="460" height="40" fill="#bde0fe" rx="5" />
+      <text x="230" y="225" font-family="Arial" font-size="16"
+            text-anchor="middle">
+        Prediction: SPAM (higher probability)
+      </text>
+    </g>
+  </g>
+
+  <!-- Additional Training & Smoothing Info (below pipeline) -->
+  <g transform="translate(100, 830)">
+    <text x="0" y="0" font-family="Arial" font-size="16"
+          fill="#2a9d8f">Training &amp; Smoothing</text>
+    <text x="0" y="25" font-family="Arial" font-size="12" fill="#333">
+      • Split your dataset into training and test sets (e.g., 80% training, 20% test).
+    </text>
+    <text x="0" y="40" font-family="Arial" font-size="12" fill="#333">
+      • Learn P(Class) and P(Word|Class) only from the training data.
+    </text>
+    <text x="0" y="55" font-family="Arial" font-size="12" fill="#333">
+      • Apply Additive (Laplace) smoothing to avoid zero probabilities, e.g.:
+        P(word|class) = [count(word,class) + 1] / [Σ count(*,class) + V].
+    </text>
+  </g>
+
+  <!-- Naive Assumption Box (bottom) -->
+  <rect x="50" y="1050" width="900" height="40" fill="#fff3b0" rx="10" />
+  <text x="500" y="1073" font-family="Arial" font-size="14"
+        text-anchor="middle" fill="#333">
+    Naive Assumption: Features (words) are conditionally independent given the class.
+    (This can simplify computations but may be imperfect in real-world data.)
+  </text>
+
+</svg>
