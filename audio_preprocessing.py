@@ -4,7 +4,7 @@ import librosa
 import soundfile as sf
 from pydub import AudioSegment
 
-def convert_mp4a_to_mp3(file_path):
+def convert_m4a_to_mp3(file_path):
     """
     Converts an .mp4a audio file to .mp3 format using pydub.
     
@@ -190,11 +190,11 @@ def process_directory(input_directory, output_directory, sr=16000, split_length=
         gap_threshold (float): Duration (in seconds) of silence in the center to remove.
     """
     for filename in os.listdir(input_directory):
-        if filename.lower().endswith(('.mp3', '.mp4a')):
+        if filename.lower().endswith(('.mp3', '.m4a')):
             file_path = os.path.join(input_directory, filename)
-            # If the file is a .mp4a, convert it to .mp3 before processing.
-            if filename.lower().endswith('.mp4a'):
-                file_path = convert_mp4a_to_mp3(file_path)
+            # If the file is a .m4a, convert it to .mp3 before processing.
+            if filename.lower().endswith('.m4a'):
+                file_path = convert_m4a_to_mp3(file_path)
             print(f"Processing file: {file_path}")
             process_audio_file(file_path, output_directory, sr=sr, split_length=split_length, top_db=top_db, gap_threshold=gap_threshold)
 
