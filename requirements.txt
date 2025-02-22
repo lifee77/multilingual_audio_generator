@@ -3,3 +3,5 @@ numpy
 librosa
 soundfile
 matplotlib
+seaborn
+pandas
