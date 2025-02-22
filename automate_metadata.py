@@ -5,7 +5,7 @@ import csv
 input_directory = "data/audio_data"  # Change this to your directory if needed
 
 # Set the output CSV filename
-output_csv = "data/metadata.csv"
+output_csv = "metadata.csv"
 
 # List all files in the input directory and filter for .wav files, then sort them alphabetically
 filenames = sorted([f for f in os.listdir(input_directory) if f.lower().endswith('.wav')])
