@@ -170,7 +170,7 @@ def process_directory(input_directory, output_directory, sr=16000, split_length=
         gap_threshold (float): Duration (in seconds) of silence in the center to remove.
     """
     for filename in os.listdir(input_directory):
-        if filename.lower().endswith('.mp3'):
+        if filename.lower().endswith(('.mp3', '.mp4a')):
             file_path = os.path.join(input_directory, filename)
             print(f"Processing file: {file_path}")
             process_audio_file(file_path, output_directory, sr=sr, split_length=split_length, top_db=top_db, gap_threshold=gap_threshold)
