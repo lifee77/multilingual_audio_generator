@@ -3,3 +3,5 @@ venv/
 .DS_Store
 *.pyc
 *.pkl
+*.pkl
+vae_model.pth
