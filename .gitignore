@@ -5,3 +5,4 @@ venv/
 *.pkl
 *.pkl
 vae_model.pth
+encoders/audio_encoder.pth
