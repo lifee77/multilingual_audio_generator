@@ -6,4 +6,5 @@ matplotlib
 seaborn
 pandas
 pyaudio
-torch
+torch>=2.0.0
+torchaudio>=2.0.0
