@@ -4,5 +4,7 @@ venv/
 *.pyc
 *.pkl
 *.pkl
+# All the model files 
+*.pth
 vae_model.pth
 encoders/audio_encoder.pth
