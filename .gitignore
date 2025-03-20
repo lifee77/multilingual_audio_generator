@@ -8,3 +8,4 @@ venv/
 *.pth
 vae_model.pth
 encoders/audio_encoder.pth
+generated_output/
