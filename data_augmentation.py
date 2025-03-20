@@ -12,18 +12,22 @@ metadata = pd.read_csv('data/metadata.csv')
 output_dir = "data/augmented_data"
 os.makedirs(output_dir, exist_ok=True)
 
+# Configuration parameter (There are ~ 400 files for each category)
+NUM_FILES_PER_CATEGORY = 350  # Change this number to augment more or fewer files
+# Number of augmented files = 4*4 * NUM_FILES_PER_CATEGORY
+
 # Track new files
 new_data = []
 
 # Select a subset of files to augment
 jeevan_english = metadata[(metadata['speaker_label'] == 'Jeevan') & 
-                         (metadata['language_label'] == 'English')].head(5)
+                         (metadata['language_label'] == 'English')].head(NUM_FILES_PER_CATEGORY)
 jeevan_not_english = metadata[(metadata['speaker_label'] == 'Jeevan') & 
-                             (metadata['language_label'] == 'Not_English')].head(5)
+                             (metadata['language_label'] == 'Not_English')].head(NUM_FILES_PER_CATEGORY)
 not_jeevan_english = metadata[(metadata['speaker_label'] == 'Not_Jeevan') & 
-                             (metadata['language_label'] == 'English')].head(5)
+                             (metadata['language_label'] == 'English')].head(NUM_FILES_PER_CATEGORY)
 not_jeevan_not_english = metadata[(metadata['speaker_label'] == 'Not_Jeevan') & 
-                                 (metadata['language_label'] == 'Not_English')].head(5)
+                                 (metadata['language_label'] == 'Not_English')].head(NUM_FILES_PER_CATEGORY)
 
 files_to_augment = pd.concat([jeevan_english, jeevan_not_english, 
                               not_jeevan_english, not_jeevan_not_english])
@@ -41,7 +45,7 @@ def add_noise(audio, noise_level=0.005):
 
 # Perform augmentation
 for idx, row in files_to_augment.iterrows():
-    input_file = os.path.join('data', row['filename'])
+    input_file = os.path.join('data/audio_data', row['filename'])
     
     # Load audio
     audio, sr = librosa.load(input_file, sr=None)
