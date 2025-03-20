@@ -8,3 +8,8 @@ pandas
 pyaudio
 torch>=2.0.0
 torchaudio>=2.0.0
+tensorflow>=2.8.0
+transformers>=4.20.0
+keras>=2.8.0
+tqdm
+scikit-learn
