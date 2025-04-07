@@ -9,3 +9,8 @@ venv/
 vae_model.pth
 encoders/audio_encoder.pth
 generated_output/
+
+# Nepali TTS model data
+nepali_tts/nepali_sentences.txt
+nepali_tts/voice_data/
+nepali_tts/.gradio
